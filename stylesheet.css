@@ -1,0 +1,73 @@
+body {
+    background-image: url('intel2.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #00ff00;
+    font-family: 'Roboto Mono', monospace;
+    margin: 20px;
+    text-align: center;
+  }
+
+.image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;   
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 75px;
+  }
+
+h2{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+h3{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Press Start 2P', cursive;
+}
+.pc{
+    text-align: center;
+    font-family: 'Roboto Mono';
+    font-size: 25px;
+}
+
+table {
+    margin: 30px auto;
+    border-collapse: collapse;
+    width: 80%;
+    border: 10px dashed lime;
+    background: #0000ff;
+    box-shadow: 0 0 50px 10px yellow;
+    font-size: 20px;
+    
+  }
+  
+table, th, td {
+    border: 2px dotted #00ff00; 
+    border-collapse: collapse;
+    padding: 8px;
+    text-align: center;
+    color: #00ff00;
+    background: #000; 
+  }
+  
+p {
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: #00ff00;
+    text-align: center;
+  }
+
+#troll-msg {
+    display: none;
+    color: red;
+    margin-top: 30px;
+    font-size: 40px;
+}
