@@ -1,0 +1,72 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  will-change: auto;
+  background-attachment: fixed; 
+}
+
+body {
+  background-image: url('nintendoSwitch.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: 'VT323', monospace;
+  text-align: center;
+  margin: 1.25rem;
+  color: #ffff33;
+}
+
+h1, h2, h3, .specs {
+  font-size: 1.75rem; 
+  max-width: 37.5rem;
+  margin: 0.625rem auto;
+  color: #ffff33; 
+  text-shadow: 0 0 5px #ffff00; 
+}
+
+table {
+  margin: 1.875rem auto;
+  border-collapse: collapse;
+  width: 80%;
+  border: 0.625rem dashed lime;
+  background: #0000ff;
+  box-shadow: 0 0 3.125rem 0.625rem yellow;
+  font-size: 1.25rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+}
+
+table, th, td {
+  border: 0.125rem dotted #00ff00;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  color: #00ff00;
+  background: #000;
+}
+
+th {
+  background: #003300;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+#troll-msg {
+  display: none;
+  color: #ffff33;
+  margin-top: 1.875rem; 
+  font-size: 2.5rem; 
+}
+
+footer {
+  margin-top: 3.125rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.9rem;
+  color: #ffff33;
+}
+
+.btn-link {
+  color: #ffff33;
+  margin-top: 1.875rem; 
+  font-size: 2.5rem;
+}
