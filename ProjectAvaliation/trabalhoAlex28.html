@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+ <title>Meu conhecimento em Hardware (uma parte apenas)</title>
+ </head>
+<body>
+<h1>Meu conhecimento em Hardware sobre OEMs, condensadores, função das bobinas, eficiência, ripple, Grupo regulado vs DC-DC, PFC Ativo e não ativo, Power good Signal, IPC vs Clock Speed, Memória RAM, cooling, diagnostico de problemas básicos,Histórico de Builds</h1>
+<h2 id="Fontes">Fontes</h2> 
+<p>As marcas de fontes que conhecemos são por exemplo: EVGA, corsair, seasonic, FSP e tem muitas por sinal. Mas essas marcas como por exemplo: EVGA, corsair, Aerocool, asus... nenhuma delas fazem realmente as suas próprias fontes mas na realidade são OEMs.</p>
+<br>
+<p>O que são realmente as OEMs? A maneira mais simples de explicar é esta: OEM significa Original equipment manufacturer, e as fontes não sao feitas pelas marcas e sim essas OEMs mas são depois vendidas com os rótulos de EVGA corsair... Porque é muito mais barato e até melhor para essas marcas só pagarem OEMs para fazerem as suas fontes isso tem vantagens: OEMs como a Seasonic, superflower são especialistas em produzir as melhores fontes possíveis, todas as fontes feita pela Seasonic considerada a mãe das fontes boas são literalmente todas elas boas, mas tem OEMs mais mid range diremos assim como por exemplo a CWT a Helly que mesmo sendo boas não são tão especializadas como a Seasonic por exemplo mas indo direto ao ponto, as OEMs que fazem as fontes para as marcas (com projetos feitos pela marca) e em caso que aconteça falhas ou avarias a OEM assume a responsabilidade e também é em um certo ponto mais barato pagar OEMs para fazer as fontes do que ter suas próprias fábricas e até em questao de controlo de qualidade acaba por ser melhor.</p>
+<p>Mas óbvio que tudo que tem vantagens tem desvantagens e tem umas quantas: a marca que vai vender a fonte com o seu rótulo vai ter dificuldade em garantir que a qualidade vai ser sempre de topo ou sólida especialmente se a OEM for uma KT Comstars desta vida, uma OEM extremamente má e que só tem fontes porcaria e que até são banidas na europa (sim é msm assim tão mau) ou se a OEM em si vai diminuir a qualidade dos componentes internos e isso por muitas passa em condensadores genéricos como por exemplo os ChengX que são facilmente os piores condensadores que existe ainda em algumas fontes devido a problemas graves de confiabilidade (jájá irei aprofundar nisso), a margem de lucro também vai ser menor porque a OEM obviamente vai querer ficar com uma certa parte da venda (de acordo com o acordado com a marca)</p>
+<br>
+<p>Os condensadores são um dos componentes mais importantes de uma fonte já que são eles que vão filtrar a variação alternada que ainda existe na transformação de corrente alternada para corrente continua e essa corrente alternada (chamado de ripple) ainda presente nas correntes continuas mesmo sendo milivolts é extremamente perigoso para o hardware já que o hardware foi projetado para trabalhar com tensões elétricas continuas e com pouco ou mesmo nada de alternado e caso essa variação AC na corrente continua for muito alto como por exemplo:12V (costuma ter o maior ripple), 5V e 3.3V estas são as principais tensões que um computador usa, hoje em dia é muito mais 12V que qualquer outra coisa. Aqui em baixo temos uma foto que mostra os padrões ATX (definidos pela intel) nas margens seguras de ripple e qualquer coisa acima já é considerado muito alto e vai danificar o hardware a médio/longo prazo e isso manifesta-se com BSOD's de erro de memória (sim por mais incrivel que pareça uma fonte pode gerar blue screen of death e quase sempre de memória porque a RAM e SSD precisam de uma corrente limpa e com essa variação AC muito alta certos dados podem corromper ou até os slots ficam temporariamente sem conseguir permitir leitura ou escrita e com isso o sistema quando precisar tirar algo desse slot para fazer certo processo e não conseguir pode mesmo causar o windows a entrar em colapso e dar a bsod)</p>
+<p>Os condensadores não têm só essa função, ao longo de um certo tempo esses condensadores tem que armazenar energia para em caso de uma falha de energia ou de corrente tanto faz, uma falha relacionada a energia, tem que segurar a carga por 10 a 16ms de acordo com as normas ATX para ter um desligamento seguro,a isto chama-se "hold up time", condensadores baratos não são capazes disso e arrisca corrupção de dados ou até pior, dano fisico a componentes mais sensiveis como as memórias por exemplo.</p>
+<img src="fonteRipple1.webp" alt='Tabela dos parametros no limite atx sobre o ripple e os aprovados pelo TecLab'>
+<br>
+<p>Ripple... o matador silencioso do hardware como devo dizer isto da forma mais básica? Ripple é a variação AC presente na conversão AC para DC e existe um resto residual de AC presente no DC e mesmo sendo em milivolts essa variação se for muito alta vai tornar-se numa autêntica namorada tóxica, no início parece um sonho mas depois vira o autêntico inferno e vai matando aos poucos a saúde mental e emocional no caso do hardware é basicamente isso mas quem principalmente vai ser os vrms a dar tudo para nao permitir que essa energia suja chegue aos componentes mais sensiveis seja para o CPU, RAM, GPU, SSD... e óbvio que os VRMs (módulos reguladores de tensão elétrica) vão ficar totalmente sobrecarregados e isso gera um aquecimento mesmo muito mas muito grande nos vrms e deixa componentes sensíveis completamente vulneráveis a tensões eletricas completamente erradas e a chance do CPU receber demasiado Volts é msm muito alta, a principal causa de morte de um processador é quase sempre tensão demasiado elevada e nunca por desgaste. Para as memórias RAM acaba por ser parecido e o mesmo para os SSD principalmente NVME, esses são mesmo muito sensíveis. Mas normalmente o que realmente morre num ssd é sempre outra coisa e não exatamente os chips de memória. Mas esses chips podem sim danificar devido ao ripple... maldito ripple.</p>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Tensão (V)</th>
+      <th>Valor Máximo Seguro de Ripple (mV)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12V</td>
+      <td>120 mV</td>
+    </tr>
+    <tr>
+      <td>5V</td>
+      <td>50 mV</td>
+    </tr>
+    <tr>
+      <td>3.3V</td>
+      <td>50 mV</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p>Eficiência... bem hoje em dia temos os selos 80+ que são indicativos de como uma fonte usa a energia que puxa da tomada isso nem sempre é sinómino de boa qualidade mas pode ser um bom indicativo, neste caso é considerado indireto. Por exemplo uma fonte da nox diz ser 80+ bronze mas os condensadores que usam são chengX ou no name condensadores e são péssimos a filtrar ripple e danificam os componentes a médio/longo prazo, e sem contar que ao longo do uso mais pesado (tipo estar a jogar um jogo) essas fontes perdem eficiência e essa energia não usada vira calor e isso pode ser meio caminho andado para um condensador arrebentar ou começar a vazar devido a isso.</p>
+<ol>
+  <li>80 Plus Standard: Eficiência mínima de 80% a 20%, 50% e 100% de carga.</li>
+  <li>80 Plus Bronze: Pelo menos 82% a 20%, 85% a 50%, 82% a 100% de carga.</li>
+  <li>80 Plus Silver: Pelo menos 85% a 20%, 88% a 50%, 85% a 100% de carga.</li>
+  <li>80 Plus Gold: Pelo menos 87% a 20%, 90% a 50%, 87% a 100% de carga.</li>
+  <li>80 Plus Platinum: Pelo menos 90% a 20%, 92% a 50%, 89% a 100% de carga.</li>
+  <li>80 Plus Titanium: Pelo menos 90% a 10%, 94% a 20%, 96% a 50%, 91% a 100% de carga.</li>
+</ol>
+<p>Existem muitos selos 80+ mas no geral as fontes de entrada atuais são pelo menos 80+ bronze e umas fontes muito boas como a seasonic G12 GC são 80+ gold e é das melhores Gold mid range que pode se comprar, e outra... a melhor fonte 80+ bronze neste momento para mim é mesmo a seasonic b12 bc é uma versão costdown da G12 e usa componentes mais baratos mas nao deixa de ter a qualidade seasonic e até tem 5 anos de garantia, foi feita para durar e a seasonic claramente confia no produto.</p>
+<br>
+<p>Agora bobinas... bem as bobinas servem para suavizar a corrente e filtrar ruídos eletromagnéticos para evitar o famoso coil whine que não é nada de grave mas pode virar irritante, coil whine é um problema bastante comum e as vezes é devido a uma ventoinha e é barulho elétrico, nada demais mas pode ser irritante caso o ruído for muito alto.</p>
+<br>
+<p><b>Grupo Regulado</b></p>
+<ul>
+  <li>Utiliza um único grande transformador para regular todas as tensões de saída (12V,5V,3.3V).</li>
+  <li>São geralmente mais baratos e simples na construção.</li>
+  <li>Menos eficientes devido à regulação das tensões, são bastante imprecisas.</li>
+  <li>Podem gerar mais calor e ripple nas tensões e pode ser um real risco de incêncio caso seja usado em gráficas que puxem muita potência devido à regulação das tensões.</li>
+  <li>Mais comuns em fontes antigas ou de entrada.</li>
+</ul>
+<p><b>DC-DC (o mais moderno que a uns anos era considerado premium e agora felizmente é o padrão)</b></p>
+<ul>
+  <li>Utilizam pequenos conversores para regular individualmente cada tensão (12V,5V,3.3V).</li>
+  <li>Oferecem regulação mais precisa e maior eficiência energética.</li>
+  <li>Menor ripple e melhor estabilidade nas tensões de saída.</li>
+  <li>Permitem melhor desempenho e maior durabilidade do hardware devido a regulação das tensões ser muito melhores e bem mais precisas nos valores referencias que são aceitáveis no limite ATX</li>
+  <li>Normalmente presentes em fontes modernas porque hoje em dia isso já é o padrão... felizmente</li>
+</ul>
+<br>
+<p>PFC ativo e não ativo.</p>
+<p>A maneira mais simples de explicar o PFC (Correção de Factor de Potência) é uma tecnologia presente nas fontes de alimentação atuais que fazem elas ajustarem diretamente o que a tomada tá a puxar seja 110V ou 230V sem precisar de uma espécie de chave para selecionar a tensão elétrica, fontes com o PFC ativo gastam muito menos energia que uma sem o PFC ativo porque sabe o quanto está a puxar e o quanto precisa e assim evita puxar demasiado.</p>
+<p>Fontes sem PFC ativo são completamente antiquadas e banidas na Europa devido à péssima eficiência elétrica, não se ajustam automaticamente à tensão eletrica puxada pela tomada ou seja tem que selecionar-se na fonte a tensão eletrica e isso é um risco bem grande especialmente para quem não sabe que tensão eletrica se usa, e só esse pequeno erro pode acontecer um incêndio, explosão, curto circuito, danos ao computador... existem varios danos que podem acontecer devido a esse erro e por isso é banido na Europa.</p>
+<br>
+<p> PG (Power Good Signal)</p>
+<p>O Power Good Signal é o tempo em que a fonte leva a estabilizar as tensões e quando elas estão estáveis, esse PG manda um sinal a motherboard para fazer boot porque já está tudo estável e preparado.</p>
+<p>Mas um Power Good Signal muito rápido, abaixo de 100ms, indica um possível defeito da fonte e é algo mau porque a fonte ta a mandar a motherboard arrancar sendo que as tensões não estão estáveis, então o pc fazem o que muitos chamem de Arranco á diesel, liga e desliga varias vezes até finalmente ligar mas isso obviamente impõe um risco ao Hardware.</p>
+<p>Já um PG demorado, acima de 500ms, indica que a fonte está a levar muito tempo a estabilizar as tensões, as motherboards mais recentes principalmente as de topo já tem até beeps especificos para alertar de problema de PG, se o PG for muito demorado (>500ms) a motherboard recusa ligar porque acredita que tem algum problema e não liga para evitar danos, PG demorado é claro sinal de idade e pode ser um sinal indireto de instabilidade em alto consumo.</p>
+<iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/H4M7jydHYCQ">
+</iframe>
+<p>Uso muito esta tier list feita pelo Zach Ferree, mas todas as fontes foram testadas em 110V que usam nos EUA ou seja umas fontes lá podem encaixar-se no tierC mas aqui na Europa (230V) ser considerado Tier B</p>
+<a href="https://docs.google.com/spreadsheets/d/1akCHL7Vhzk_EhrpIGkz8zTEvYfLDcaSpZRB6Xt6JWkc/edit?gid=1973454078#gid=1973454078" target="_blank">Lista oficial de ranking de fontes feito pela ZTT</a>
+<p>Temos vários testadores de fontes na internet mas o canal que mais gosto de ver sobre fontes e testem tudo que é fonte, explicam muito bem é este:</p>
+<a href="https://www.youtube.com/@TecLabbyRbuass" target="_blank">Canal Oficial do TecLab</a>
+<h2 id="monitores">Monitores</h2>
+<p>Hoje em dia usamos os paíneis LCD led ou seja a cor que vemos do monitor são por causa de cristais liquidos que refletem a luz e criam as cores que vemos no monitor e existem 3 paíneis, os mais famosos:</p>
+<p>Painel TN:</p>
+<p>É um painel basicamente obsoleto, o Twisted Nematic é nada mais nada menos que os cristais liquidos estarem torcidos uns com os outros e isso tem obviamente vantagens e desvantagens.</p>
+<li>Vantagens:</li>
+<ol>
+      <li>Tempo de resposta muito rápido (bom para shooters tipo o cs:go que não precisa de ter cores refinadas e sim uma resposta muito mais rapida).</li>
+      <li>Bem mais barato porque é uma tecnologia bem antiga.</li>
+      <li>A refresh rates destes monitores é significamente alta. São normalmente os que têm mais.</li>
+      </ol>
+      <li>Desvantagens:</li>
+      <ol>
+        <li>Cores Terriveis.</li>
+        <li>Angulos de visão pior ainda.</li>
+        <li>Contraste bem mediocre (1000:1)</li>
+        </ol>
+<p>Painel VA:</p>
+<p>É um painel que é no meio do TN e do IPS, tecnicamente falando é pior que TN em algumas coisas e melhor que o TN em algumas, pior que o IPS em algumas e melhor em algumas, é um painel vertical alignment ou seja os cristais liquidos tao todos na vertical e isso visa melhorar o constraste e esse painel é o melhor para ver filmes mas para jogos deixa a desejar devido a possivel problema de ghosting (ghosting é quando o monitor não consegue acompanhar o que passa no jogo normalmente jogos rapidos devido a uma velocidade de atualizaçao baixa)</p>
+<li>Vantagens</li>
+<ol>
+  <li>Excelente contraste, estes paineis são os que tem o melhor constraste.</li>
+  <li>Melhor qualidade de imagem que o TN.</li>
+  <li>Ângulos de visão muito melhores que o TN.</li>
+</ol>
+
+<li>Desvantagens</li>
+<ol>
+  <li>Tempo de resposta inferior aos TN e alguns IPS (pode causar ghosting).</li>
+  <li>Cores são melhores que TN mas pior que IPS.</li>
+  <li>Tempo de resposta mais alto que um TN ou seja não é de todo 100% ideal para jogos competitivos onde tem muita coisa a acontecer.</li>
+</ol>
+<p>Painel IPS:</p>
+<p>É um painel que visa ter a maior precisão nas cores, in plane switching ou seja os cristais tao todos na horizontal.</p>
+<li>Vantagens</li>
+<ol>
+  <li>Melhor reprodução de cores dos três paineis LCD LED</li>
+  <li>Tem os melhores ângulos de visão.</li>
+  <li>Tempos de resposta razoáveis mais lentos mas hoje em dia são o standard e tem cada vez mais melhores tempos de resposta.</li>
+</ol>
+<li>Desvantagens</li>
+<ol>
+  <li>Contraste inferior aos VA, grande parte dos modelos têm o mesmo contraste que o TN (1000:1).</li>
+  <li>Backlight bleeding (vazamentos de luz nas bordas).</li>
+  <li>Geralmente mais caros que TN e VA.</li>
+</ol>
+<p>O contraste pode parecer estranho algo como (1000:1), isso significa que os brancos são mil vezes mais brilhantes que o preto, ou seja o preto não é preto e sim um cinza bem escuro e os brancos são bem mais brilhantes, quanto mais brilhante for melhor vai ser para ver a diferença entre as cores.</p>
+<p>OEMs dos paíneis LCD LED (os que conheço)</p>
+<p><b>As OEMs que são realmente boas.</b></p>
+<ul>
+    <li>LG displays, a criadora dos paíneis IPS.</li>
+    <li>AU Optronics, disparada a melhor OEM de paineis que temos no mercado.</li>
+    <li>BOE, cada vez melhor. Ainda nao são os melhores mas sinceramente para mim eles competem diretamente com a LG</li>
+</ul>
+<p>A OEM que para mim é mesmo a pior</p>
+<p>A CSOT Panda, o pior painel possivel, cheios de problemas, cores? horrivel. durabilidade? pior ainda. É tudo menos uma OEM de jeito e uma certa marca que devia de ter vergonha na cara é a AOC que em uns quantos modelos budget usaram estes paineis de merda de proposito...</p>
+<p>Já não basta a pessima qualidade de construção desses monitores como ainda foram mesmo baratear no painel, até em uns modelos melhores os paineis continuam sendo mediocres ou puramente maus, com pores para IPS bem mediocres, contraste abaixo da média (1000:1), HDR que nem existe.</p>
+<br>
+<p>Bem temos um painel que é o OLED mas que nao é LCD LED e sim totalmente diferente mas vai aqui um resumo rapido:</p>
+<p>Em paineis OLED cada pixel trabalha por si proprio para ter a melhor cor, contraste possivel mas isso vem com um problema que é o burn in, a cor e contrate de um OLED é talvez 1000x melhor que um painel lcd led tradicional mas os problemas que esses paineis tem deixa muito questionável o seu preço tão elevado.</p>
+<br>
+<h2 id="clock vs ipc">Clock speed vs IPC</h2>
+<p>Clock speed é uma coisa e IPC é outra... totalmente diferente.</p>
+<p>Clock speed é a quantidade de ciclos que um processador pode fazer e o IPC é o numero de instruções que um CPU consegue fazer por ciclo.</p>
+<p>E é por esta razão que um R5 3600 perde contra um celeron G7400 em jogos ou tarefas que puxem mt mais pelo single core porque faz mais ou menos 20% a mais instruções por ciclo.</p>
+<p>E também é por esta razão que um R7 9800X3D mesmo só fazendo 5.2Ghz faz muito mais instruçoes que um i9 14900k que faz 5.8Ghz (e é um autentico sugador de energia).</p>
+<p>Na prática o clock speed não quer dizer nada, o IPC é que realmente importa não é a toa que um 5600x é mais lento que uum 7600x mesmo ambos tendo 6 cores e 12threads. IPC aumenta de acordo com a arquitetura, arquiteturas menores como a atual zen5 da AMD que é 5nm (processadores serie 9000) fazem muito mais instruções por ciclo, porque os transistores estão todos muito mais juntos uns aos outros permitindo ligar e desligar muito mais rapidamente, isso tambem exige um bom cooling porque o calor fica mais concentrado em um só ponto e não só, a fabricação desses processadores com essa arquitetura é muito caro porque é muito dificil fazer com precisão esses transistores</p>
+<br>
+<h2 id="RAM">Memória RAM e a confusão que não deveria existir com as MegaTransfers e Megahertz</h2>
+<p>A RAM (Random acess memory) é uma memória de acesso aleatório que permite leitura e escrita, é volatil ou seja não guarda dados para sempre e sim apenas temporariamente, existe no computador porque a RAM é a memória de acesso muito rápido para o CPU, já que buscar os dados direto do disco é demasiado lento, e por isso quando um sistema tem mais RAM, tenta sempre meter a maior quantidade de dados possível para reduzir a necessidade de ir ao disco obter os dados necessários.</p>
+<p>Isto sinceramente é um problema que tecnicamente não é problemático mas que considerado bastante estúpido ainda existir, muitos fabricantes ainda fazem confusão entre Mhz e MT/s, sabem as memórias que são supostamente 3200mhz?</p>
+<p>Então, essas memórias fazem 3200 transferências por segundo, e isso são MegaTransfers e não Megahertz, a memoria a cada ciclo faz 2 transferências ou seja uma memória de supostamente 3200mhz nao é 3200mhz e sim 1600mhz, se fosse 3200mhz seria 6400MT/s...</p>
+<p>Outra coisa que também não deveria ser problema mas ainda existe, achar que latência não importa... que coisa mais tola de se achar, com esta fórmula conseguimos calcular exatamente a latência de uma RAM (CL o numero que tiver por exemplo o 18, X 1000 dps a dividar pela frequencia), por exemplo preferias uma memoria de 3200MT/S cl16 ou uma 3600MT/S cl22? Muitos iriam dizer essa 3600mhz cl22 mas será que é melhor? Então bora lá aplicar a formula.</p>
+<p>primeiro a 3600MT/s e cl22, (22*1000)/1800 = 12.2 nanosegundos, agora a 3200MT/s e cl16, (16*1000)/1600 = 10 nanosegundos  </p>
+<p>Ou seja afinal o modulo 3200MT/s cl16 faz os ciclos bem mais rapidamente que o 3600MT/s e é melhor devido a isso.</p>
+<br>
+<h2 id="northeSouthBridge">O antiquado Southbridge Northbridge e o atual chipset</h2>
+<p>O chipset é como o nome diz, é um conjunto de chips que limitem a largura de banda permitida por uma motherboard, seja RAM, PCIe... chipsets de entrada tipo os H da intel ou as A da AMD são mais para office e não para PCs para jogos, e por isso tem VRMs bem mais fraquinhos sem dissipador e que também entrega pouca corrente no geral, são feitos para processadores básicos tipo os I3/Ryzen 3</p>
+<p>Antes, as placas-mãe tinham dois chips principais: Northbridge e Southbridge. O Northbridge gerenciava a comunicação entre processador, memória RAM e placa gráfica (PCIe). O Southbridge cuidava das conexões mais lentas, como USB, armazenamento, áudio e periféricos.</p>
+<p>O Northbridge foi integrado no processador, ou seja o CPU é que lida com a comunicação dele com a RAM, PCIe e já não requer de estar a mandar pedidos à motherboard para receber o que precisa. Hoje, o chipset é o responsável pelas funções que antes eram do Southbridge, como controlar as conexões de menor velocidade tipo os USBs, Serial ATA...  e gerenciar dispositivos.</p>
+<p>Resumindo:</p>
+<ul>
+  <li>Northbridge: liga processador, RAM e GPU (agora está integrado no CPU)</li>
+  <li>Southbridge: controla periféricos, armazenamento, USB e áudio</li>
+  <li>Chipset: gerencia o que o Southbridge gerenciava mas agora limita a largura de banda que pode oferecer para a RAM, PCIe, armazenamento</li>
+</ul>
+<br>
+<h2 id="cooling">O Cooling dos dissipadores como o dissipador do CPU, VRMs, GPU, SSD NVME...</h2>
+<p>Bem isto é outra coisa que deveria ser simples mas acaba por ser de alguma forma muito confuso mas pronto tou aqui para mostrar conhecimento e ensinar.</p>
+<p>Nos computadores temos 2 tipos primarios de cooling: Passivo e ativo.</p>
+<p>Dissipadores ativos como as ventoinhas como por exemplo nas Gráficas, estão presentes para puxar ar fresco e arrefecer o dissipador que está a acumular calor, o ar fresco ajuda a evitar que fique muito quente, mesma coisa para os cpus coolers sejam watercooler ou air cooler e é parecido também nas fontes.</p>
+<p>Dissipadores passivos são aqueles que são visto em motherboards mais high end ou mid range com boa construção, esses passivos não necessitam de ventoinhas porque o dissipador em si já consegue lidar de acumular o calor sem precisar de levar ar fresco, isto é visto em VRMs em umas quantas motherboards, em SSD NVMe...</p>
+<br>
+<h2 id="diagnosticos">Diagnosticar problemas básicos</h2>
+<p>PC não liga:</p>
+<p>Verifica se a fonte está realmente ligada e aquele pequeno "switch" esta em I e nao O, se mesmo assim não funcionar, tira o powerswitch e testa com uma chave phillips tocar no meio desses dois pinos assim vai simular um powerswitch a ser ativo, e se não funcionar pode ser mesmo problema de fonte, se não tens um psu tester para verificar o estado de vida da fonte, leva para uma loja de informática para realmente verem qual é o real problema, eles lá tem todo o tipo de peças e ferramentas para diagnosticar esses problemas.</p>
+<p>PC liga mas não dá imagem.</p>
+<p>primeira coisa a fazer é ver se o cabo está realmente funcionar, se está 100% funcional pode ser uma boa testar com outro monitor para descartar a possibilidade de um monitor avariado, se tudo até agora está bom mas ainda não dá video, testa com a GPU integrada do CPU se tiver, se não tiver, então testa tirar um dos pentes se tiveres dois, muitas vezes o problema pode ser apenas um simples pente de memória RAM, mas caso não tens realmente a certeza, leva o pc para uma loja de informática e não gastes dinheiro sem saber ainda a real causa, se não sabes se foi memoria ou GPU, então não gastes dinheiro em reparos desnecessários, se possivel leva o monitor e o cabo que usaste só para excluir a possibilidade de ser algum problema de monitor assim eles conseguem te dizer com mais detalhe o que realmente avariou.</p>
+<p>PC liga e desliga ou reinicia depois de um curto periodo de tempo:</p>
+<p>Se o PC liga e desliga logo assim que ligaste ou reinicia depois de um tempinho, pode ser problema de fonte ou até de superaquecimento do CPU, ou até um problema grave de RAM, se possível ao ligar o pc vai direto para a BIOS e verifica a CPU temperature, se na bios já tá a 100 graus, tá mais que claro o problema, pasta termica tá seca e tens que trocar, se sabes trocar otimo, se nao sabes leva a uma loja. Caso tiver tudo normal mas quando fazes algo mais pesadinho PC desliga-se ou dá BSOD, se for erro do estilo "Critical process died, memory management" ou algo assim, pode ser msm problema de fonte, porque uma fonte problematica pode sim causar problemas á memória do computador, testa a memoria com memtest e se te der BSOD de algo relacionado com a memoria, a memoria tá com defeito, se tiveres dois experimenta fazer o memtest com apenas um modulo e depois com o outro, pode haver a chance de ser ambos. Caso depois disto tudo, tudo parece normal no memtest mas o pc só porque sim desliga-se mesmo assim, experimenta fazer um pequeno stress test se o pc desligar podes estar a lidar com um problema grave de fonte ou de VRMs da motherboard, recomendo novamente a levar o pc para uma loja de informática e explicar o que ja fizeste e assim fica muito mais facil para os técnicos diagnosticarem o real problema.</p>
+<p>Barulho bem alto:</p>
+<p>Pode ser que tens ventoinhas barulhentas, ou que tão com os motores a falhar, ou senão tás mesmo a lidar com o famoso coil whine que é barulho eletrico, não é grave e nem perigoso é bem comum na verdade mas pode tornar-se irritante, se sim experimenta diminuir as rotaçoes das ventoinhas até largares de ouvir esse ruído muito alto, também é recomendado limpares as ventoinhas só mesmo para evitar pó entrar dentro do motor da ventoinha.</p>
+<br>
+<h2 id="historico">Histórico de Builds (Puramente as melhores seja desempenho bruto ou custo beneficio)</h2>
+<p>Bem acredito que não é novidade que alguém com meu conhecimento todo não faça builds seja para clientes, amigos... afinal meu conhecimento vem todo do facto que sou um entusiasta mas não qualquer um que deixa-se enganar por fake specs... Mas bem no meu histórico tenho atualmente por volta de 20 builds, nenhuma deu problema grave até hoje, e bem fica aqui o top 3 das melhores (não vão ter o preço porque esses ficheiros são antigos, alguns tiveram presentes no backup que fiz antes de ter formatado o pc.</p>
+<ol>
+  <li>Build 1 - R5 7600X RX 7800XT B850 ASUS TUF WIFI ARCTIC FREEZER LIQUID III 240 A-RGB SEASONIC GX-850W 80+ GOLD V4 32GB CORSAIR VENGEANCE DDR5 6000MT/S CL30 CAIXA AEROCOOL P500C SSD T500 1TB CRUCIAL</li>
+  <p>Razões:</p>
+  <p>Bem para ficar claro cada escolha: podia ter colocado um melhor cpu já que a b850 é overkill... sim é overkill mas é um overkill inteligente porque ao gastar mais na motherboard fica-se com muito mais margem de upgrade,com esta motherboard dá para ir facilmente até o 9800X3D aka o melhor CPU para jogos neste momento, a fonte foi escolhida porque é das melhores fontes que pode se comprar, tem as normas ATX mais modernas(3.1) e PCIe(5.1), 7800XT foi outro overkill porque é uma gráfica 1440p e não 1080p mas este PC foi feito e pensado para ser o mais future proof possível e para durar imenso, por isso tem uma fonte premium com 10 anos de garantia, o watercool AIO escolhido foi o FREEZER III, cooler que é mesmo muito bom pelo preço, é dos melhores watercoolers do mercado e óbvio que é da Arctic, marca extremamente confiável.</p>
+  <li>Build 2 - R5 2600, B450 Tomahawk MSI,RX 5600XT, 16GB DDR4 3200MT/S cl18, Asus tuf 650B 650W 80+ bronze, caixa atx msi mag 121A, Arctic freezer 34 CO, SSD sata 1TB</li>
+  <p>Razões:</p>
+  <p>Parece estranho ter uma motherboard com VRMs tão bons mas essa motherboard era bem cara então porque está numa build custo beneficio? Facil... na altura o mano conseguiu comprar essa em desconto e queria uma build em torna dela o orçamento já não me lembro ao certo mas pronto, o clássico R5 2600 excelente CPU nessa altura para jogos mas era bem quente esse processador então para o resfriar escolhi o freezer 34 CO, cooler mais que competente em arreferecer esses processadores Ryzen de 2 geração, era o melhor cooler por 40 euros na altura mas infelizmente os freezer 34 já não se vendem mais aparentemente, o sucessor do freezer 34 foi o freezer 36 que tbh é sim um upgrade. Fonte asus... nessa altura essas asus tuf pelo preço eram disparadas as melhores fontes da altura, tinha topologia DC-DC algo que não existia ainda em fontes mid range ou se existisse nao era bem implementado mas essa fonte cuja OEM é a Great Wall acabou por ter sido uma das melhores da sua altura. O resto da build é equilibrada... não tem muito de especial tirando o facto que isto foi feito com peças uma ou outra usada.</p>
+  <li>Build 3 - I5 10400f, B360 ASUS TUF, rtx 2060 6GB, asus tuf 650B 650W 80+ bronze, 16GB DDR4 3200MT/S CL18 ripjaws g.skill, caixa MSI MAG Forge 100R, 1TB HDD, 256GB SSD sata</li>
+  <p>Razões:</p>
+  <p>A escolha do HDD pode parecer estranha mas o mano já tinha um HDD 1TB para jogos entao reutilizei isso e meti um SSD 256GB para o windows e algumas coisas que precisam de ser executadas com mais velocidade, no geral esta build está muito bem equilibrada, esta build foi em 2022/inicio 2023 com peças usadas e não saiu assim muito caro, orçamento era apertadissimo e saiu uma bela build capaz de rodar ainda muita coisa, talvez sofra bottleneck de CPU ou de GPU... mas com o orçamento apertado isto foi o melhor possível.</p>
+</ol>
+<a href="#">Voltar para o topo da página</a>
+<br>
+<a href="#Fontes">Ir para Fontes</a>
+<br>
+<a href="#monitores">Ir para Monitores</a>
+<br>
+<a href="#clock vs ipc">Ir para Clock Speed vs IPC</a>
+<br>
+<a href="#RAM">Ir para RAM</a>
+<br>
+<a href="#northeSouthBridge">Ir para o antiquado Southbridge Northbridge e o atual chipset</a>
+<br>
+<a href="#cooling">Ir para Cooling</a>
+<br>
+<a href="#diagnosticos">Ir para Diagnosticos</a>
+<br>
+<a href="#historico">Ir para Histórico de Builds</a>
+<footer>
+  <p>Contacto: <a href="mailto:alex.c.rodrigues207@gmail.com">alex.c.rodrigues207@gmail.com</a> | Telefone: 935 129 761</p>
+</footer>
+</body>
+</html>
