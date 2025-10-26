@@ -149,7 +149,6 @@ if (jogadas >= jogadasMax){
         }
     }
     cout << endl;
-    if (jogadas <= jogadasMax) break;
     cout << Player2 << " linha 1, 2, 3: ";
     cin >> linha;
     cout << endl;
@@ -207,4 +206,5 @@ int main(){
 //trazer feito nada de win condition trazer pronto 
     jogo(myMatriz);
     return 0;
+
 }
