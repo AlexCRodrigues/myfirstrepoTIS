@@ -9,6 +9,28 @@ struct JogoDoGalo{
 
 JogoDoGalo myMatriz[3][3];
 
+void MostrarTabuleiro(JogoDoGalo matriz[3][3]){
+    cout << "Tabuleiro: " << endl;
+    cout << endl;
+    for (int i = 0; i < 3; i++) {          
+        for (int j = 0; j < 3; j++) {      
+        if (myMatriz[i][j].ocupada){ 
+        cout << " " << myMatriz[i][j].jogada << " ";
+        }
+        else{
+        cout << " . ";
+        }
+        if (j < 2){
+        cout << "|";
+        }
+        }
+        cout << endl;
+        if (i < 2){
+        cout << "-----------" << endl;
+        }
+    }
+}
+
 char verificarWinCondition(JogoDoGalo matriz[3][3]) {
     
     for (int i = 0; i < 3; i++) {
@@ -64,26 +86,7 @@ void jogo(JogoDoGalo myMatriz[3][3]){
     int jogadasMax= 9;
 
     while(jogadas < jogadasMax){
-        cout << "Tabuleiro: " << endl;
-        cout << endl;
-        for (int i = 0; i < 3; i++) {          
-        for (int j = 0; j < 3; j++) {      
-        if (myMatriz[i][j].ocupada){ 
-        cout << " " << myMatriz[i][j].jogada << " ";
-        }
-        else{
-        cout << " . ";
-        }
-        if (j < 2){
-        cout << "|";
-        }
-        }
-        cout << endl;
-        if (i < 2){
-        cout << "-----------" << endl;
-        }
-    }
- 
+    MostrarTabuleiro(myMatriz);
     cout << endl;
     cout << Player1 << " linha 1, 2, 3: ";
     cin >> linha;
@@ -95,25 +98,7 @@ void jogo(JogoDoGalo myMatriz[3][3]){
  
     while (linha < 0 || coluna < 0 || linha > 2 || coluna > 2) {
     cout << "Só tens até 3 linhas e 3 colunas" << endl;
-    cout << "Tabuleiro: " << endl;
-    cout << endl;
-    for (int i = 0; i < 3; i++) {          
-        for (int j = 0; j < 3; j++) {      
-        if (myMatriz[i][j].ocupada){ 
-        cout << " " << myMatriz[i][j].jogada << " ";
-        }
-        else{
-        cout << " . ";
-        }
-        if (j < 2){
-        cout << "|";
-        }
-        }
-        cout << endl;
-        if (i < 2){
-        cout << "-----------" << endl;
-        }
-    }
+    MostrarTabuleiro(myMatriz);
     cout << endl;
     cout << Player1 << " linha 1, 2, 3: ";
     cin >> linha;
@@ -143,25 +128,7 @@ void jogo(JogoDoGalo myMatriz[3][3]){
     cout << Player1 << " jogou no quadrado (" << linha + 1 << ", " << coluna + 1 << ")" << endl;
     cout << endl;
 
-    cout << "Tabuleiro: " << endl;
-    cout << endl;
-    for (int i = 0; i < 3; i++) {          
-        for (int j = 0; j < 3; j++) {      
-        if (myMatriz[i][j].ocupada){ 
-        cout << " " << myMatriz[i][j].jogada << " ";
-        }
-        else{
-        cout << " . ";
-        }
-        if (j < 2){
-        cout << "|";
-        }
-        }
-        cout << endl;
-        if (i < 2){
-        cout << "-----------" << endl;
-        }
-    }
+    MostrarTabuleiro(myMatriz);
     cout << endl;
 
     char vencedor = verificarWinCondition(myMatriz);
@@ -192,25 +159,7 @@ void jogo(JogoDoGalo myMatriz[3][3]){
 
     while (linha < 0 || coluna < 0 || linha > 2 || coluna > 2) {
     cout << "Só tens até 3 linhas e 3 colunas" << endl;
-    cout << "Tabuleiro: " << endl;
-    cout << endl;
-    for (int i = 0; i < 3; i++) {          
-        for (int j = 0; j < 3; j++) {      
-        if (myMatriz[i][j].ocupada){ 
-        cout << " " << myMatriz[i][j].jogada << " ";
-        }
-        else{
-        cout << " . ";
-        }
-        if (j < 2){
-        cout << "|";
-        }
-        }
-        cout << endl;
-        if (i < 2){
-        cout << "-----------" << endl;
-        }
-    }
+    MostrarTabuleiro(myMatriz);
     cout << endl;
     cout << Player2 << " linha 1, 2, 3: ";
     cin >> linha;
@@ -240,62 +189,25 @@ void jogo(JogoDoGalo myMatriz[3][3]){
     cout << Player2 << " jogou no quadrado (" << linha + 1 << ", " << coluna + 1 << ")" << endl;
     cout << endl;
 
-    cout << "Tabuleiro: " << endl;
+    MostrarTabuleiro(myMatriz);
     cout << endl;
-    for (int i = 0; i < 3; i++) {          
-        for (int j = 0; j < 3; j++) {      
-        if (myMatriz[i][j].ocupada){ 
-        cout << " " << myMatriz[i][j].jogada << " ";
-        }
-        else{
-        cout << " . ";
-        }
-        if (j < 2){
-        cout << "|";
-        }
-        }
-        cout << endl;
-        if (i < 2){
-        cout << "-----------" << endl;
-        }
-    }
 
     char vencedor2 = verificarWinCondition(myMatriz);
+    
     if (vencedor2 != ' ') {
         if (vencedor2 == jogador1){
         cout << endl;
         cout << Player1 << " venceu o jogo!" << endl;
         break;
         }
-        else if (vencedor2 == jogador2)
+        else if (vencedor2 == jogador2){
         cout << endl;
         cout << Player2 << " venceu o jogo!" << endl;
         break;
+        }
     }   
-
-
-    cout << "Tabuleiro: " << endl;
-    cout << endl;
-    for (int i = 0; i < 3; i++) {          
-        for (int j = 0; j < 3; j++) {      
-        if (myMatriz[i][j].ocupada){ 
-        cout << " " << myMatriz[i][j].jogada << " ";
-        }
-        else{
-        cout << " . ";
-        }
-        if (j < 2){
-        cout << "|";
-        }
-        }
-        cout << endl;
-        if (i < 2){
-        cout << "-----------" << endl;
-        }
+    MostrarTabuleiro(myMatriz);
     }
-        cout << endl;
-}
-cout << endl;
 }
 
 int main(){
