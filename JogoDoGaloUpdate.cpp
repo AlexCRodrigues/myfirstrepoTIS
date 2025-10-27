@@ -291,7 +291,6 @@ void jogo(JogoDoGalo myMatriz[3][3]){
     }
         cout << endl;
 }
-cout << "Jogo acabou empatado meus gandas bots." << endl;
 }
 
 int main(){
