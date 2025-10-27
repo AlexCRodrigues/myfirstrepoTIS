@@ -169,11 +169,12 @@ void jogo(JogoDoGalo myMatriz[3][3]){
         if (vencedor == jogador1){
         cout <<endl;
         cout << Player1 << " venceu o jogo!" << endl;
+        break;
     }
         else if (vencedor == jogador2)
         cout << endl;
         cout << Player2 << " venceu o jogo!" << endl;
-        return; 
+        break;
     }   
 
     if (jogadas >= jogadasMax){
@@ -264,11 +265,14 @@ void jogo(JogoDoGalo myMatriz[3][3]){
         if (vencedor2 == jogador1){
         cout << endl;
         cout << Player1 << " venceu o jogo!" << endl;
+        break;
         }
         else if (vencedor2 == jogador2)
+        cout << endl;
         cout << Player2 << " venceu o jogo!" << endl;
-        return; 
+        break;
     }   
+
 
     cout << "Tabuleiro: " << endl;
     cout << endl;
@@ -291,6 +295,7 @@ void jogo(JogoDoGalo myMatriz[3][3]){
     }
         cout << endl;
 }
+cout << endl;
 }
 
 int main(){
@@ -298,3 +303,4 @@ int main(){
     jogo(myMatriz);
     return 0;
 }
+
