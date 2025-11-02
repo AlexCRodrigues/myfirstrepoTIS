@@ -91,8 +91,7 @@ bool fazerJogada(string &jogador, char &simbolo) {
 }
 
 void jogo(){
-    char jogador1;
-    char jogador2;
+    char jogador1, jogador2;
     string Player1, Player2;
     
     cout << "Player 1, nome: ";
