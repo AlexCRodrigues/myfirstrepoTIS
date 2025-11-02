@@ -9,7 +9,7 @@ struct JogoDoGalo{
 
 JogoDoGalo myMatriz[3][3];
 
-void MostrarTabuleiro(JogoDoGalo matriz[3][3]){
+void MostrarTabuleiro(){
     cout << "Tabuleiro: " << endl;
     cout << endl;
     for (int i = 0; i < 3; i++){          
@@ -31,7 +31,7 @@ void MostrarTabuleiro(JogoDoGalo matriz[3][3]){
     }
 }
 
-char verificarWinCondition(JogoDoGalo matriz[3][3]) {
+char verificarWinCondition() {
     for (int i = 0; i < 3; i++) {
         if (matriz[i][0].ocupada &&
         matriz[i][0].jogada == matriz[i][1].jogada &&
@@ -109,21 +109,21 @@ void jogo(JogoDoGalo myMatriz[3][3]){
     cin >> jogador2;
     cout << endl;
     
-    if(jogador1 == jogador2){
+    while(jogador1 == jogador2){
         cout << "Já foi escolhido, escolhe outro(X/O): " << Player2 << endl;
         cin >> jogador2;
     }
     cout << endl;
 
-int jogadas = 0;
-int jogadasMax = 9;
+    int jogadas = 0;
+    int jogadasMax = 9;
 
 while(jogadas < jogadasMax){
     system("clear");
-    MostrarTabuleiro(myMatriz);
+    MostrarTabuleiro();
     fazerJogada(Player1, jogador1);
     jogadas++; 
-    char vencedor = verificarWinCondition(myMatriz);
+    char vencedor = verificarWinCondition();
     if (vencedor != ' ') {
     if (vencedor == jogador1){
     cout << Player1 << " venceu o jogo!" << endl;
@@ -133,17 +133,17 @@ while(jogadas < jogadasMax){
     if (jogadas >= jogadasMax){
         cout << "Tabuleiro cheio." << endl;
         cout << endl;
-        MostrarTabuleiro(myMatriz);
+        MostrarTabuleiro();
         cout << endl;
         break;
     }
     cout << endl;
     system("clear");
-    MostrarTabuleiro(myMatriz);
+    MostrarTabuleiro();
     fazerJogada(Player2, jogador2);
     jogadas++;
-    MostrarTabuleiro(myMatriz);
-    char vencedor2 = verificarWinCondition(myMatriz);
+    MostrarTabuleiro();
+    char vencedor2 = verificarWinCondition();
     if (vencedor2 != ' ') {
     if (vencedor2 == jogador2){
     cout << endl;
@@ -157,5 +157,4 @@ while(jogadas < jogadasMax){
 int main(){
     system("clear");
     jogo(myMatriz);
-    return 0;
 }
