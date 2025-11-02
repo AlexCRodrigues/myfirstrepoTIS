@@ -64,7 +64,7 @@ bool fazerJogada(string &jogador, char &simbolo) {
     linha--; coluna--;
     cout << endl;
     while (linha < 0 || coluna < 0 || linha > 2 || coluna > 2) {
-        cout << "Só tens até 3 linhas e 3 colunas palhaço" << endl;
+        cout << "So tens ate 3 linhas e 3 colunas palhaco" << endl;
         cout << jogador << " linha 1, 2, 3: ";
         cin >> linha;
         cout << jogador << " coluna 1, 2, 3: ";
@@ -110,7 +110,7 @@ void jogo(){
     cout << endl;
     
     while(jogador1 == jogador2){
-        cout << "Já foi escolhido, escolhe outro(X/O): " << Player2 << endl;
+        cout << "Ja foi escolhido, escolhe outro(X/O): " << Player2 << endl;
         cin >> jogador2;
     }
     cout << endl;
