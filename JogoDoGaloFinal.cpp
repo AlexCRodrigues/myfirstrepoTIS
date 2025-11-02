@@ -33,25 +33,25 @@ void MostrarTabuleiro(){
 
 char verificarWinCondition() {
     for (int i = 0; i < 3; i++) {
-        if (matriz[i][0].ocupada &&
-        matriz[i][0].jogada == matriz[i][1].jogada &&
-        matriz[i][1].jogada == matriz[i][2].jogada)
-        return matriz[i][0].jogada;
+        if (myMatriz[i][0].ocupada &&
+        myMatriz[i][0].jogada == myMatriz[i][1].jogada &&
+        myMatriz[i][1].jogada == myMatriz[i][2].jogada)
+        return myMatriz[i][0].jogada;
     }
     for (int j = 0; j < 3; j++) {
-        if (matriz[0][j].ocupada &&
-        matriz[0][j].jogada == matriz[1][j].jogada &&
-        matriz[1][j].jogada == matriz[2][j].jogada)
-        return matriz[0][j].jogada;
+        if (myMatriz[0][j].ocupada &&
+        myMatriz[0][j].jogada == myMatriz[1][j].jogada &&
+        myMatriz[1][j].jogada == myMatriz[2][j].jogada)
+        return myMatriz[0][j].jogada;
     }
-    if (matriz[0][0].ocupada &&
-        matriz[0][0].jogada == matriz[1][1].jogada &&
-        matriz[1][1].jogada == matriz[2][2].jogada)
-        return matriz[0][0].jogada;
-    if (matriz[0][2].ocupada &&
-        matriz[0][2].jogada == matriz[1][1].jogada &&
-        matriz[1][1].jogada == matriz[2][0].jogada)
-        return matriz[0][2].jogada;
+    if (myMatriz[0][0].ocupada &&
+        myMatriz[0][0].jogada == myMatriz[1][1].jogada &&
+        myMatriz[1][1].jogada == myMatriz[2][2].jogada)
+        return myMatriz[0][0].jogada;
+    if (myMatriz[0][2].ocupada &&
+        myMatriz[0][2].jogada == myMatriz[1][1].jogada &&
+        myMatriz[1][1].jogada == myMatriz[2][0].jogada)
+        return myMatriz[0][2].jogada;
     return ' ';
 }
 
