@@ -55,7 +55,7 @@ char verificarWinCondition() {
     return ' ';
 }
 
-bool fazerJogada(string jogador, char simbolo) {
+bool fazerJogada(string &jogador, char &simbolo) {
     int linha, coluna;
     cout << jogador << " linha 1, 2, 3: ";
     cin >> linha;
@@ -90,7 +90,7 @@ bool fazerJogada(string jogador, char simbolo) {
     return true;
 }
 
-void jogo(JogoDoGalo myMatriz[3][3]){
+void jogo(){
     char jogador1;
     char jogador2;
     string Player1, Player2;
@@ -156,5 +156,5 @@ while(jogadas < jogadasMax){
 }
 int main(){
     system("clear");
-    jogo(myMatriz);
+    jogo();
 }
