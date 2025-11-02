@@ -128,7 +128,7 @@ while(jogadas < jogadasMax){
     if (vencedor == jogador1){
     MostrarTabuleiro();
     cout << endl;
-    cout << Player1 << " venceu o jogo!" << endl;
+    cout << Player1 << " venceu!" << endl;
     cout << endl;
     break;
     }
@@ -151,7 +151,7 @@ while(jogadas < jogadasMax){
     if (vencedor2 == jogador2){
     MostrarTabuleiro();
     cout << endl;
-    cout << Player2 << " venceu o jogo!" << endl;
+    cout << Player2 << " venceu!" << endl;
     cout << endl;
     break;
     }
