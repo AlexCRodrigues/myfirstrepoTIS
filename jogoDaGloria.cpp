@@ -139,10 +139,10 @@ void Jogo(int &dado){
     }
     Tabuleiro(pos1, pos2);
     if(pos1 >= 29){
-        cout << player1 << " venceu o jogo!" << endl;
+        cout << player1 << " venceu" << endl;
         jogoAtivo = false;
     } else if(pos2 >= 29){
-        cout << player2 << " venceu o jogo!" << endl;
+        cout << player2 << " venceu" << endl;
         jogoAtivo = false;
     }
 }   
