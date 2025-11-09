@@ -115,6 +115,7 @@ void Jogo(int &dado){
     casasEspeciais();
     while (jogoAtivo){
     if(podeJogar1){
+        system("clear");
         cout << endl << player1 << " gira o dado e é Enter boneco" << endl;
         cin.get();
         Dado(dado);
