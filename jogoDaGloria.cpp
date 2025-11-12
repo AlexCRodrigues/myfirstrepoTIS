@@ -119,6 +119,7 @@ void Jogo(int &dado){
         if(pos1 >= 29){
         cout << player1 << " venceu" << endl;
         jogoAtivo = false;
+        break;
         }
     } else {
         cout << player1 << " perdeu a vez!" << endl;
@@ -135,6 +136,7 @@ void Jogo(int &dado){
         if(pos2 >= 29){
         cout << player2 << " venceu" << endl;
         jogoAtivo = false;
+        break;
     }
     } else {
         cout << player2 << " perdeu a vez!" << endl;
