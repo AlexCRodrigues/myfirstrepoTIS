@@ -115,13 +115,16 @@ void Jogo(int &dado){
     casasEspeciais();
     while (jogoAtivo){
     if(podeJogar1){
-        system("clear");
         cout << endl << player1 << " gira o dado e é Enter boneco" << endl;
         cin.get();
         Dado(dado);
         pos1 += dado;
         if(pos1 > 29) pos1 = 29;
         efeitoCasaEspecial(pos1, player1, podeJogar1, dado);
+        if(pos1 >= 29){
+        cout << player1 << " venceu" << endl;
+        jogoAtivo = false;
+        }
     } else {
         cout << player1 << " perdeu a vez!" << endl;
         podeJogar1 = true; 
@@ -134,18 +137,15 @@ void Jogo(int &dado){
         pos2 += dado;
         if(pos2 > 29) pos2 = 29;
         efeitoCasaEspecial(pos2, player2, podeJogar2, dado);
+        if(pos2 >= 29){
+        cout << player2 << " venceu" << endl;
+        jogoAtivo = false;
+    }
     } else {
         cout << player2 << " perdeu a vez!" << endl;
         podeJogar2 = true;
     }
     Tabuleiro(pos1, pos2);
-    if(pos1 >= 29){
-        cout << player1 << " venceu" << endl;
-        jogoAtivo = false;
-    } else if(pos2 >= 29){
-        cout << player2 << " venceu" << endl;
-        jogoAtivo = false;
-    }
 }   
 }
 
