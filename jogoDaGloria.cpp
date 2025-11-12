@@ -90,11 +90,6 @@ void efeitoCasaEspecial(int &pos, string &player, bool &podeJogar, int &dado){
     else if(casa == "E") {
         cout << player << " deve esperar pelos outros jogadores!" << endl;
         podeJogar = false;
-        cout << endl << player << " gira o dado e é Enter boneco" << endl;
-        cin.get();
-        Dado(dado);
-        pos += dado;
-        if(pos > 29) pos = 29;
     }
 }
 
