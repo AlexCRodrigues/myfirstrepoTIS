@@ -8,7 +8,7 @@ void inserir(string &nome, int &idade, int &CC){
     ofstream ficheiro("registos.txt", ios::app);
     cin.ignore();
     cout << "Insira o seu nome" << endl;
-    cin >> nome;
+    getline(cin, nome);
     cout << "Insira o seu número de cartão de cidadão" << endl;
     cin >> CC;
     cout << "Insira sua idade" << endl;
